@@ -3,12 +3,32 @@
 ** Findings
 ** Development
 ** Journal
+
+
+*** Entry 2015-06-25
+**** Done :
+- Set-up Jabber
+- Base class & interfaces
+- Test with message queues.
+**** Questions :
+- Is RMI the right technology to handle the worker's return value ? (as of now the worker streams the world states)
+- What technology is the right one for this problem, RMI or IDL ?
+**** Planned work [0/4]
+***** Client/Server separation
+- [ ] Rewrite PLM to handle remote calls
+- [ ] Prepare & write remote calls
+***** Technologic alternatives
+- [ ] Learn about message queues (state : tutorial)
+- [ ] Learn about IDL or RMI, choose which one to use.
+
+
 *** Entry 2015-06-24
 **** Done :
 - Set-up dev environment.
 **** Questions.
 - None
 **** Planned Work [0/1]
-- [ ] Use RMI to send compile commands from WebPLM to a standalone RMI server PLM.
+- [ ] Do the server/client separation.
+
+
 ** Conclusion
- 
