@@ -1,0 +1,14 @@
+* Report
+** Introduction
+** Findings
+** Development
+** Journal
+*** Entry 2015-06-24
+**** Done :
+- Set-up dev environment.
+**** Questions.
+- None
+**** Planned Work [0/1]
+- [ ] Use RMI to send compile commands from WebPLM to a standalone RMI server PLM.
+** Conclusion
+ 
