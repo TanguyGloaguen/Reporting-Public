@@ -11,6 +11,27 @@ https://github.com/TanguyGloaguen/WebPLM_Worker
 ** Development
 ** Journal
 
+*** Entry 2015-06-29
+**** Done :
+- Learned & used Semaphores.
+- Replaced WebPLM compilation calls with (partial) messages to workers.
+- Basic structure to retrieve return messages.
+**** Questions :
+**** Problems to solve.
+- Problem woth RabbitMQ : some WebPLM actors seems to "eat" the replies for other actors despite the CorrelationID check.
+:: Note : queue reinjections don't fix it (infinite loop ?)
+:: Note : solution may be in the way we retrieve data from the queue.
+**** Planned work [0/4]
+***** Client/Server implementation
+- [ ] Interface WebPLM to handle compilation via message queues.
+:: status : structure of code begun. ETA Tue. 18:00
+- [ ] Update the PLM data with MQ answers
+:: status : idientified way to implement. ETA Tue./Wed.
+- [ ] Include JSON converters directly in the worker.
+:: status : tinkered with. ETA Wed.
+- [ ] 'clean' PLM to limit data carried by workers
+:: status : not started. ETA early Jul.
+
 *** Entry 2015-06-26
 **** Done :
 - More tests with message queues. Ended tutorial, began PLM implementation.
