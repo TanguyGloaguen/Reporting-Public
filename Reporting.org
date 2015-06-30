@@ -11,6 +11,27 @@ https://github.com/TanguyGloaguen/WebPLM_Worker
 ** Development
 ** Journal
 
+*** Entry 2015-06-30
+**** Done :
+- Finished compilation calls to workers
+- Transmission of return messages implemented.
+- Stream of world data implemented.
+**** Questions :
+**** Problems to solve :
+- A crash (?) happens sometimes. Maybe an old listener not shut down.
+:: update 3:30 PM - It seems to be due to the GitSpy being told the code was executed but crashing with a NullPtrEx due to the execution result not being stored.
+**** Planned work [1/4]
+***** Client/Server implementation
+- [ ] Interface WebPLM to handle compilation via message queues
+:: status : about 75% done. ETA Wed.
+- [ ] Update the PLM data with MQ answers
+:: Status : identified ways to implement. ETA Wed./Thu.
+- [X] Include JSON converters directly into the worker.
+:: status : DONE
+:: Note : buggles done. The rest will come as other problems are solved.
+- [ ] 'clean' PLM to limit data carried by workers
+:: status : not started. ETA early Jul.
+
 *** Entry 2015-06-29
 **** Done :
 - Learned & used Semaphores.
