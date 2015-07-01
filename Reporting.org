@@ -11,6 +11,20 @@ https://github.com/TanguyGloaguen/WebPLM_Worker
 ** Development
 ** Journal
 
+*** Entry 2015-07-01
+**** Done :
+- Solved the lasting bug.
+- Some more JSON converters translated.
+**** Questions :
+**** Planned work [0/3]
+- [ ] Interface WebPLM to handle compilation calls
+:: status : functionnal, about 90% done. ETA after [2]
+:: note : might take a little longer to do because of PLM encapsulation.
+- [ ] Update the PLM data with MQ answers
+:: status : started. ETA Thu.
+- [ ] 'clean' PLM to limit data carried by workers.
+:: status : making notes as the other points progresses. ETA early Jul.
+
 *** Entry 2015-06-30
 **** Done :
 - Finished compilation calls to workers
