@@ -11,6 +11,21 @@ https://github.com/TanguyGloaguen/WebPLM_Worker
 ** Development
 ** Journal
 
+*** Entry 2015-07-02
+**** Done :
+- Started to write the GIT push function to handle remote compilation
+- Started to write a worker-side GIT push data format.
+**** Questions :
+- Is it necessary to force "kind" in the commit JSON to first place ?
+**** Planned work [0/4]
+- [ ] Interface WebPLM to handle compilation calls
+:: status : 90%. ETA : Monday ?
+- [ ] Update the PLM data with MQ answers
+:: status : well in. ETA this evening.
+- [ ] 'clean' PLM to limit data carried by workers
+:: status : some leads. ETA early Jul.
+- [ ] Rewrite GIT functions to be used from WebPLM directly
+
 *** Entry 2015-07-01
 **** Done :
 - Solved the lasting bug.
