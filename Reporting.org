@@ -10,26 +10,49 @@ https://github.com/TanguyGloaguen/WebPLM_Worker
 * Development
 * Journal
 
+** Entry 2015-07-06
+- Updated the PLM data with MQ answers.
+- Interface WebPLM to handle compilation calls.
+- Aggregate stream messages in lists.
+- Solve problems with actors eating messages from the MQ
+*** Planned work [4/9]
+- [X] Interface WebPLM to handle remote compilation calls
+:: status : DONE. Second pass coming.
+- [X] Update the PLM data with Message Queue answers
+:: status : DONE
+- [ ] 'clean' PLM to limit data carried by workers.
+:: status : started. no ETA
+- [ ] Rewrite GIT functions to be used from WebPLM directly.
+:: status : port in progress. No ETA yet.
+- [X] Aggregate stream messages in lists.
+:: status : DONE
+- [X] Solve problems with actors 'eating' message queue items.
+:: status : DONE (will maybe need more tests)
+- [ ] Create controller.
+- [ ] Check variable status in workers at execution.
+- [ ] Failsafe for infinite loops in workers & down workers for WebPLM.
+:: status : finished for WebPLM. Not yet finished for the worker..
+
 ** Entry 2015-07-03
 - Finished rewriting GIT push functions to handle remote compilation
 - Finished worker-side GIT push data format.
-*** Planned work [0/5]
-- [ ] Interface WebPLM to handle compilation calls
-- [ ] Update the PLM data with MQ answers
+*** Planned work [3/5]
+- [X] Interface WebPLM to handle compilation calls
+- [X] Update the PLM data with MQ answers
 - [ ] 'clean' PLM to limit data caried by workers
 - [ ] Rewrite GIT functions to be used from WebPLM directly
 :: status : execution is rewritten. Rest is coming but later.
-- [ ] Aggregate stream messages in lists with time synchronization.
+- [X] Aggregate stream messages in lists with time synchronization.
 
 ** Entry 2015-07-02
 - Started to write the GIT push function to handle remote compilation
 - Started to write a worker-side GIT push data format.
 *** Questions :
 - Is it necessary to force "kind" in the commit JSON to first position ?
-*** Planned work [0/4]
-- [ ] Interface WebPLM to handle compilation calls
+*** Planned work [2/4]
+- [X] Interface WebPLM to handle compilation calls
 :: status : 90%. ETA : Monday ?
-- [ ] Update the PLM data with MQ answers
+- [X] Update the PLM data with MQ answers
 :: status : well in. ETA this evening.
 - [ ] 'clean' PLM to limit data carried by workers
 :: status : some leads. ETA early Jul.
@@ -38,11 +61,11 @@ https://github.com/TanguyGloaguen/WebPLM_Worker
 ** Entry 2015-07-01
 - Solved the lasting bug.
 - Some more JSON converters translated.
-*** Planned work [0/3]
-- [ ] Interface WebPLM to handle compilation calls
+*** Planned work [2/3]
+- [X] Interface WebPLM to handle compilation calls
 :: status : functionnal, about 90% done. ETA after [2]
 :: note : might take a little longer to do because of PLM encapsulation.
-- [ ] Update the PLM data with MQ answers
+- [X] Update the PLM data with MQ answers
 :: status : started. ETA Thu.
 - [ ] 'clean' PLM to limit data carried by workers.
 :: status : making notes as the other points progresses. ETA early Jul.
@@ -54,11 +77,11 @@ https://github.com/TanguyGloaguen/WebPLM_Worker
 *** Problems to solve :
 - A crash (?) happens sometimes. Maybe an old listener not shut down.
 :: update 3:30 PM - It seems to be due to the GitSpy being told the code was executed but crashing with a NullPtrEx due to the execution result not being stored.
-*** Planned work [1/4]
+*** Planned work [3/4]
 ***** Client/Server implementation
-- [ ] Interface WebPLM to handle compilation via message queues
+- [X] Interface WebPLM to handle compilation via message queues
 :: status : about 75% done. ETA Wed.
-- [ ] Update the PLM data with MQ answers
+- [X] Update the PLM data with MQ answers
 :: Status : identified ways to implement. ETA Wed./Thu.
 - [X] Include JSON converters directly into the worker.
 :: status : DONE
@@ -74,13 +97,13 @@ https://github.com/TanguyGloaguen/WebPLM_Worker
 - Problem woth RabbitMQ : some WebPLM actors seems to "eat" the replies for other actors despite the CorrelationID check.
 :: Note : queue reinjections don't fix it (infinite loop ?)
 :: Note : solution may be in the way we retrieve data from the queue.
-*** Planned work [0/4]
+*** Planned work [2/4]
 **** Client/Server implementation
-- [ ] Interface WebPLM to handle compilation via message queues.
+- [X] Interface WebPLM to handle compilation via message queues.
 :: status : structure of code begun. ETA Tue. 18:00
-- [ ] Update the PLM data with MQ answers
+- [X] Update the PLM data with MQ answers
 :: status : idientified way to implement. ETA Tue./Wed.
-- [ ] Include JSON converters directly in the worker.
+- [X] Include JSON converters directly in the worker.
 :: status : tinkered with. ETA Wed.
 - [ ] 'clean' PLM to limit data carried by workers
 :: status : not started. ETA early Jul.
@@ -93,17 +116,17 @@ https://github.com/TanguyGloaguen/WebPLM_Worker
 - Repositories created, Git disabled but the spy will need base PLM package change to be disabled. (3:50 PM)
 *** Questions :
 - What is a good way to include Scala code in a Java program (library or switch compiler to Scala ?) (see JSON converters for context)
-*** Planned work [4/8]
+*** Planned work [8/9]
 **** Client/Server separation
-- [ ] Interface WebPLM to handle compilation via message queues.
+- [X] Interface WebPLM to handle compilation via message queues.
 :: TODO write the sender/consumer part
 :: TODO add correlation ID management 
 :: status : not started - ETA Tue.
-- [ ] Update the PLM data with message queue answers 
+- [X] Update the PLM data with message queue answers 
 :: status : not started - ETA Wed.
 - [X] Write the worker as a request message queue consumer and a reply message queue sender.
 :: DONE
-- [ ] Include JSON converters written for webPLM directly in the worker.
+- [X] Include JSON converters written for webPLM directly in the worker.
 :: status : tinkered with - ETA Mon.
 - [ ] 'clean' PLM to limit data carried by workers.
 :: status : not started - ETA early Jul.
@@ -123,9 +146,9 @@ https://github.com/TanguyGloaguen/WebPLM_Worker
 *** Questions :
 - Is RMI the right technology to handle the worker's return value ? (as of now the worker streams the world states)
 - What technology is the right one for this problem, RMI or IDL ?
-*** Planned work [3/4]
+*** Planned work [4/4]
 **** Client/Server separation
-- [ ] Rewrite PLM to handle remote calls
+- [X] Rewrite PLM to handle remote calls
 :: status : technologic alternatives study
 - [X] Prepare & write remote calls
 :: status : diagrams
@@ -137,8 +160,8 @@ https://github.com/TanguyGloaguen/WebPLM_Worker
 
 ** Entry 2015-06-24
 - Set-up dev environment.
-*** Planned Work [0/1]
-- [ ] Do the server/client separation.
+*** Planned Work [1/1]
+- [X] Do the server/client separation.
 :: status : no ETA
 
 * Conclusion
