@@ -10,6 +10,24 @@ https://github.com/TanguyGloaguen/WebPLM_Worker
 * Development
 * Journal
 
+** Entry 2015-07-07
+- Added failsafe for crashes/infinite loops.
+:: 2s message stream timeout / 30s execution limit.
+*** Questions
+- what am I supposed to retrieve from the remote JVM ? (data + format)
+:: stack traces (limit to ~20 of useful ones (cut the top & bottom ones)
+:: attribute values.
+*** Planned work [1/5]
+- [ ] 'clean' PLM to limit data carried by workers.
+- [ ] Rewrite GIT functions to be used from WebPLM directly.
+- [ ] Create controller.
+- [ ] Check variable status in workers at execution.
+:: status : studying solutions
+:: - jdi (com.sun.jdi) and two virtual machines.
+:: - add security manager to the second VM
+- [X] Failsafe for infinite loops & down workers.
+:: status : DONE
+
 ** Entry 2015-07-06
 - Updated the PLM data with MQ answers.
 - Interface WebPLM to handle compilation calls.
@@ -30,7 +48,7 @@ https://github.com/TanguyGloaguen/WebPLM_Worker
 :: status : DONE (will maybe need more tests)
 - [ ] Create controller.
 - [ ] Check variable status in workers at execution.
-- [ ] Failsafe for infinite loops in workers & down workers for WebPLM.
+- [X] Failsafe for infinite loops in workers & down workers for WebPLM.
 :: status : finished for WebPLM. Not yet finished for the worker..
 
 ** Entry 2015-07-03
