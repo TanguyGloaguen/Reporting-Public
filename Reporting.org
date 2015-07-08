@@ -10,6 +10,21 @@ https://github.com/TanguyGloaguen/WebPLM_Worker
 * Development
 * Journal
 
+** Entry 2015-07-08
+- Removed GIT from PLM.
+- Some studies about future Judge structure.
+:: see notes 8/7 1-3 or http://i.imgur.com/6SyA1Vt.jpg
+- Began working on controller.
+*** Planned work [0/4]
+- [ ] 'clean' PLM to limit data carried by judges.
+:: status : ongoing. GIT removed today.
+- [ ] Rewrite GIT functions to be used from WebPLM directly
+:: status : not started yet. ETA end Jul. ?
+- [ ] Check variable status in judges at execution.
+:: status : on hold. Some studies done.
+- [ ] Create controller.
+:: status : merely started. (ideal) ETA Friday.
+
 ** Entry 2015-07-07
 - Added failsafe for crashes/infinite loops.
 :: 2s message stream timeout / 30s execution limit.
