@@ -10,6 +10,19 @@ https://github.com/TanguyGloaguen/WebPLM_Worker
 * Development
 * Journal
 
+** Entry 2015-07-16
+- Docker install completed.
+- Fixed some issues with return message queue clutter.
+*** Planned work [0/4]
+- [ ] 'clean' PLM to limit data carried by judges
+:: status : on hold.
+- [ ] Rewrite GIT functions to be used from WebPLM directly
+:: theorized remote GIT client. On hold.
+- [ ] Check variable status in judge at execution (judge-slave separation)
+:: status : comes right after controller.
+- [ ] Create controller.
+:: status : ongoing.
+
 ** Entry 2015-07-09
 - Docker install (long because a lot of hardware issues)
 :: note : not yet complete.
