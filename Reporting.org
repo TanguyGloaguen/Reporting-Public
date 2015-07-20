@@ -10,6 +10,22 @@ https://github.com/TanguyGloaguen/WebPLM_Worker
 * Development
 * Journal
 
+** Entry 2015-07-20
+- Written javadoc of the Judge, cleaned up some output code.
+*** Planned work [0/4]
+- [ ] Repair Git bug.
+:: status : nearly done; problem w/ compilation.
+- [ ] Clean WebPLM piping structure.
+:: status : not started.
+- [ ] Clean Judge structure.
+:: status : on hold.
+- [ ] Add output to stream
+:: status : not started
+- [ ] Check variable status in judge at execution
+:: status : not started.
+- [ ] Rewrite GIT function sto be used remotely
+:: status : not started
+
 ** Entry 2015-07-16
 - Docker install completed.
 - Fixed some issues with return message queue clutter.
