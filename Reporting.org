@@ -10,9 +10,31 @@ https://github.com/TanguyGloaguen/WebPLM_Worker
 * Development
 * Journal
 
+** Entry 2015-07-21
+- Started rewriting Judge structure.
+- Finished PLM bug sorting, still can't generate the .jar
+*** Planned work [0/8]
+- [ ] Repair Git bug.
+:: status : bug repaired but can't compile yet. Will test on other computer.
+- [ ] Clean WebPLM piping structure.
+:: status : started.
+- [ ] Clean Judge structure.
+:: status : started.
+- [ ] Add output to stream
+:: status : not started
+- [ ] Check variable status in judge at execution.
+:: status : not started
+- [ ] Rewrite Git functions to be used remotely
+:: status : not started
+- [ ] Write automatic Judge load balancer.
+:: status : not started
+- [ ] Remove PLM from WebPLM.
+:: status : not started
+
+
 ** Entry 2015-07-20
 - Written javadoc of the Judge, cleaned up some output code.
-*** Planned work [0/4]
+*** Planned work [0/6]
 - [ ] Repair Git bug.
 :: status : nearly done; problem w/ compilation.
 - [ ] Clean WebPLM piping structure.
