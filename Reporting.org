@@ -10,6 +10,31 @@ https://github.com/TanguyGloaguen/WebPLM_Worker
 * Development
 * Journal
 
+** Entry 2015-07-23
+- Fixed a bunch of things.
+- Added stream for Syso.
+*** Planned work [4/10]
+- [X] Repair Git bug.
+:: status : done.
+- [X] Clean WebPLM piping structure.
+:: status : Done.
+- [X] Clean judge structure.
+:: status : Done.
+- [X] Add output to stream.
+:: status : Done.
+- [ ] Remove randomness in random worlds.
+:: status : started.
+- [ ] Check variable status at execution
+:: status : not started.
+- [ ] Rewrite Git functions to be used remotely.
+:: status : not started.
+- [ ] Write automatic judge load balancer.
+:: status : not started
+- [ ] Remove PLM from Judges
+:: status : not started
+- [ ] Remove PLM from WebPLM
+:: status : not started.
+
 ** Entry 2015-07-21
 - Started rewriting Judge structure.
 - Finished PLM bug sorting, still can't generate the .jar
