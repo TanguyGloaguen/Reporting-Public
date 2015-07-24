@@ -3,12 +3,32 @@ This internship is about taking the current WebPLM implementation as well as the
 The final version should handle code execution in a different environnement for each compilation/execution request.
 Link for the separated WebPLM :
 https://github.com/TanguyGloaguen/webPLM/tree/separation-WebPLM
+https://github.com/BuggleInc/webPLM/tree/split
 Link for the worker :
 https://github.com/TanguyGloaguen/WebPLM_Worker
+https://github.com/BuggleInc/PLM-judge
 
 * Findings
 * Development
 * Journal
+
+** Entry 2015-07-24
+- Removed random from worlds.
+- Solved a bug in judges.
+*** Planned work [0/6]
+- [X] Remove randomness in random worlds.
+:: status : finished.
+- [ ] Make WebPLM not game-dependant.
+:: status : model creation in progress.
+- [ ] Remove PLM form WebPLM.
+:: status : not started.
+- [ ] Remove PLM from judge
+:: status : on hold.
+- [ ] Check variable status at execution.
+:: status : Started, on hold.
+- [ ] Write automatic judge load balancer.
+:: status : not started.
+
 
 ** Entry 2015-07-23
 - Fixed a bunch of things.
@@ -55,7 +75,6 @@ https://github.com/TanguyGloaguen/WebPLM_Worker
 :: status : not started
 - [ ] Remove PLM from WebPLM.
 :: status : not started
-
 
 ** Entry 2015-07-20
 - Written javadoc of the Judge, cleaned up some output code.
