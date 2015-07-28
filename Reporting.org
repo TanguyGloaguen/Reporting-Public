@@ -12,10 +12,10 @@ https://github.com/BuggleInc/PLM-judge
 * Development
 * Journal
 
-** Entry 2015-07-25
+** Entry 2015-07-27
 - Wrote UML representation of both the PLM 2.X, current WebPLM and upcoming one.
 - Generated all (implemented) initial worlds JSON data.
-*** Planned work [0/6]
+*** Planned work [0/5]
 - [ ] Make WebPLM not game-dependant.
 :: status : generating static data.
 - [ ] Remove PLM from WebPLM
