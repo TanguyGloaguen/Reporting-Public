@@ -12,10 +12,26 @@ https://github.com/BuggleInc/PLM-judge
 * Development
 * Journal
 
+** Entry 2015-07-25
+- Wrote UML representation of both the PLM 2.X, current WebPLM and upcoming one.
+- Generated all (implemented) initial worlds JSON data.
+*** Planned work [0/6]
+- [ ] Make WebPLM not game-dependant.
+:: status : generating static data.
+- [ ] Remove PLM from WebPLM
+:: status : model creation nearly finished.
+- [ ] Remove PLM from judge
+:: status : model creation on hold.
+- [ ] Check variable status at execution
+:: status : on hold.
+- [ ] Write automatic judge load balancer.
+:: status : not started.
+
+
 ** Entry 2015-07-24
 - Removed random from worlds.
 - Solved a bug in judges.
-*** Planned work [0/6]
+*** Planned work [1/6]
 - [X] Remove randomness in random worlds.
 :: status : finished.
 - [ ] Make WebPLM not game-dependant.
