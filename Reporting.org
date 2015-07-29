@@ -11,11 +11,31 @@ https://github.com/BuggleInc/PLM-judge
 * Findings
 * Development
 * Journal
+** Entry 2015-07-29
+- Continued to rewrite GIT for WebPLM
+- Continued to work on direct usage of lessons & exercises
+*** Observations
+- I don't know why I cant access pictures from WebPLM... I routed files at the right place though.
+:: Will see with Matthieu when he come back, maybe he'll know.
+*** Planned work [0/6]
+- [ ] Make WebPLM non game dependant
+. [ ] Rewrite GIT functions to be used from WebPLM directly.
+:: status : in progress
+. [ ] Rewrite WebPLM JSON to be either generated from worlers or pre-generated.
+:: status : initial state use in implementation.
+- [ ] Dynamically send data to judges
+:: status : model created; not started.
+- [ ] Remove PLM from judge
+:: status : not started
+- [ ] Check variable status at execution.
+:: status : on hold
+- [ ] Write automatic load balancer.
+:: status : not started.
 
-** Entru 2015-07-28
+** Entry 2015-07-28
 - Started rewriting GIT for WebPLM directly
 - Started lesson extracting & usage from WebPLM instead of PLM.
-*** Planned work [0/X]
+*** Planned work [0/6]
 - [ ] Make WebPLM non game dependant
 . [ ] Rewrite GIT functions to be used from WebPLM
 :: status : ongoing.
@@ -45,7 +65,6 @@ https://github.com/BuggleInc/PLM-judge
 - [ ] Write automatic judge load balancer.
 :: status : not started.
 
-
 ** Entry 2015-07-24
 - Removed random from worlds.
 - Solved a bug in judges.
@@ -62,7 +81,6 @@ https://github.com/BuggleInc/PLM-judge
 :: status : Started, on hold.
 - [ ] Write automatic judge load balancer.
 :: status : not started.
-
 
 ** Entry 2015-07-23
 - Fixed a bunch of things.
