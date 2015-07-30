@@ -11,6 +11,41 @@ https://github.com/BuggleInc/PLM-judge
 * Findings
 * Development
 * Journal
+** Entry 2015-07-30
+- Stopped working on the GIT rewrite.
+:: Waiting for Matthieu to come back, some implementations problems to ask too.
+- Continued working on direct use of lessons / exercises
+*** Questions :
+**** Commit question
+The new structure of PLM forces the software to consider execution, execution result and user state as three different items. There is some GIT commits that became more difficult to write as a result. This include (but not limited to) :
+- All commits having the last outcome.
+- All commits having the PLM version (is it the judge version ? the WebPLM version ?)
+I'd like some infos on what to re-implement, and what to discard, as well as some infos on what replacements to use for things that are not there anymore.
+*** Planned work [1/11]
+- [ ] Remove Game from WebPLM
+. [ ] Rewrite Git functions to be used from WebPLM directly.
+:: status : on hold (see above)
+. [X] Generate "start" exercise JSON.
+:: note : already completed a few days ago.
+. [ ] Use "start" exercise JSON when requested.
+:: status : Rewriting call functions.
+. [ ] Auto-generate exercise list.
+:: status : not started.
+. [ ] Instantiate each exercise once.
+:: status : not started (model written)
+. [ ] Use previously instantiated exercises as data containers.
+:: status : Model creation for data containers.
+. [ ] Encapsulate user status
+:: status : model created, writing code.
+- [ ] Dynamically send data to judges.
+:: status : data to send modeling.
+- [ ] Remove PLM from judge
+:: status : not started.
+- [ ] Check variable status at execution
+:: status : on hold.
+- [ ] Write automatic load balancer.
+:: status : not started.
+
 ** Entry 2015-07-29
 - Continued to rewrite GIT for WebPLM
 - Continued to work on direct usage of lessons & exercises
