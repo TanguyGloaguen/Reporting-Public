@@ -11,6 +11,32 @@ https://github.com/BuggleInc/PLM-judge
 * Findings
 * Development
 * Journal
+** Entry 2015-08-05
+- Added direct demo use
+- Generation tool for current & future static data.
+*** Planned work [2/10]
+- [ ] Remove Game from WebPLM
+. [ ] Thread tribunal.
+:: status : not done.
+. [ ] Rewrite Git for WebPLM
+:: status : on hold.
+. [X] Auto-generate exercise list
+:: status : done
+. [X] Use generated exercise JSOn when requested.
+:: status : 50% done (demo)
+. [ ] Instantiate each exercise once. -> Use HTML from WebPLM directly.
+:: status : cancelled, better option is to discard exercise structure and just use HTML.
+. [ ] Use previously instantiated exercises as data container -> Create global data container
+:: status : model created. Ongoing writing.
+- [ ] Dynamically send data to judges.
+:: status : data to send modeling.
+- [ ] Remove PLM from judge
+:: status : not started.
+- [ ] Check variable status at execution
+:: status : on hold.
+- [ ] Write automatic load balancer.
+:: status : not started.
+
 ** Entry 2015-07-30
 - Stopped working on the GIT rewrite.
 :: Waiting for Matthieu to come back, some implementations problems to ask too.
@@ -23,6 +49,8 @@ The new structure of PLM forces the software to consider execution, execution re
 I'd like some infos on what to re-implement, and what to discard, as well as some infos on what replacements to use for things that are not there anymore.
 *** Planned work [1/11]
 - [ ] Remove Game from WebPLM
+. [ ] Thread tribunal
+:: status : not done.
 . [ ] Rewrite Git functions to be used from WebPLM directly.
 :: status : on hold (see above)
 . [X] Generate "start" exercise JSON.
