@@ -11,11 +11,26 @@ https://github.com/BuggleInc/PLM-judge
 * Findings
 * Development
 * Journal
+** Entry 2015-08-11
+- Unlinking WebPLM and Game.
+*** Planned work [0/7]
+- Remove Game from WebPLM [0/3]
+. [ ] Rewrite Git for WebPLM
+. [ ] Use HTML from WebPLM directly.
+:: status : more than 50% done.
+. [ ] Create global data container.
+:: status : started
+- [ ] Localize compilation interrupt/crash messages in client.
+- [ ] Dynamically send data to judges.
+- [ ] Remove PLM from judge.
+- [ ] Check variable status at execution.
+- [ ] Write automatic load balancer.
+
 ** Entry 2015-08-06
 - Code refactoring
 - Threaded tribunal.
 *** Planned work [1/8]
-- [ ] Remove Game from WebPLM
+- [ ] Remove Game from WebPLM [1/4]
 . [X] Thread  tribunal.
 :: status : finished.
 . [ ] Rewrite Git from WebPLM.
