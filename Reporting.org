@@ -11,6 +11,25 @@ https://github.com/BuggleInc/PLM-judge
 * Findings
 * Development
 * Journal
+** Entry 2015-08-13
+- Pre-generated lessons + exercises data.
+- Converted most localization structure to be used from WebPLM.
+*** Planned work [0/7]
+- Remove Game from WebPLM [2/5]
+. [ ] Rewrite Git for WebPLM.
+. [X] Use HTML from WebPLM directly
+:: status : done
+. [X] Create global data container.
+:: status : done
+. [ ] Use the gloabl data container everywhere.
+. [ ] Rewrite events to use WebPLm specific data instead of Game data.
+:: status : ongoing (est. 60% done)
+- [ ] Localize compilation interrupt/crash messages in client.
+- [ ] Dynamically send data to judges.
+- [ ] Remove PLM from judge.
+- [ ] Check variable status at execution.
+- [ ] Write automatic load balancer.
+
 ** Entry 2015-08-11
 - Unlinking WebPLM and Game.
 *** Planned work [0/7]
