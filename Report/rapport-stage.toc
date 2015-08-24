@@ -2,8 +2,8 @@
 \contentsline {chapter}{Remerciements}{v}{Doc-Start}
 \contentsline {chapter}{Table des mati\`eres}{vii}{chapter*.1}
 \contentsline {chapter}{\numberline {1}Pr\IeC {\'e}sentation}{3}{chapter.1}
-\contentsline {section}{\numberline {1.1}le LORIA}{3}{section.1.1}
-\contentsline {section}{\numberline {1.2}la "Programmer's Learning Machine"}{4}{section.1.2}
+\contentsline {section}{\numberline {1.1}Le LORIA}{3}{section.1.1}
+\contentsline {section}{\numberline {1.2}La "Programmer's Learning Machine"}{4}{section.1.2}
 \contentsline {subsection}{\numberline {1.2.1}La PLM en tant qu'application lourde}{4}{subsection.1.2.1}
 \contentsline {subsection}{\numberline {1.2.2}Portage web de la PLM}{5}{subsection.1.2.2}
 \contentsline {chapter}{\numberline {2}Probl\IeC {\'e}matique du stage}{7}{chapter.2}
@@ -11,25 +11,26 @@
 \contentsline {section}{\numberline {2.2}Objectifs du stage}{7}{section.2.2}
 \contentsline {chapter}{\numberline {3}R\IeC {\'e}alisation}{9}{chapter.3}
 \contentsline {section}{\numberline {3.1}Environnement de r\IeC {\'e}alisation}{9}{section.3.1}
-\contentsline {section}{\numberline {3.2}M\IeC {\'e}thode de r\IeC {\'e}alisation}{10}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Mod\IeC {\`e}le global envisag\IeC {\'e}}{10}{subsection.3.2.1}
+\contentsline {section}{\numberline {3.2}M\IeC {\'e}thode de r\IeC {\'e}alisation}{9}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Mod\IeC {\`e}le global envisag\IeC {\'e}}{9}{subsection.3.2.1}
 \contentsline {subsection}{\numberline {3.2.2}Cr\IeC {\'e}ation des juges}{10}{subsection.3.2.2}
 \contentsline {subsection}{\numberline {3.2.3}Utilisation des juges}{10}{subsection.3.2.3}
-\contentsline {subsection}{\numberline {3.2.4}Stockage du r\IeC {\'e}sultat}{10}{subsection.3.2.4}
-\contentsline {subsection}{\numberline {3.2.5}Analyses de performances, limites d'ex\IeC {\'e}cution, arr\IeC {\^e}t automatique}{10}{subsection.3.2.5}
-\contentsline {subsection}{\numberline {3.2.6}Etude d'un mode d\IeC {\'e}bug}{10}{subsection.3.2.6}
-\contentsline {subsection}{\numberline {3.2.7}Utilisation de Dockers}{10}{subsection.3.2.7}
-\contentsline {subsection}{\numberline {3.2.8}Agglom\IeC {\'e}ration des donn\IeC {\'e}es d'op\IeC {\'e}rations}{10}{subsection.3.2.8}
-\contentsline {subsection}{\numberline {3.2.9}Ajout d'op\IeC {\'e}rations de logging}{10}{subsection.3.2.9}
-\contentsline {subsection}{\numberline {3.2.10}Standardisation des donn\IeC {\'e}es}{10}{subsection.3.2.10}
-\contentsline {subsection}{\numberline {3.2.11}Documentation du code existant}{11}{subsection.3.2.11}
-\contentsline {subsection}{\numberline {3.2.12}Mise en place d'un Security Manager}{11}{subsection.3.2.12}
-\contentsline {subsection}{\numberline {3.2.13}Pr\IeC {\'e}-g\IeC {\'e}n\IeC {\'e}ration des donn\IeC {\'e}es}{11}{subsection.3.2.13}
-\contentsline {subsection}{\numberline {3.2.14}Nettoyage de la PLM}{11}{subsection.3.2.14}
-\contentsline {section}{\numberline {3.3}R\IeC {\'e}sultats obtenus}{11}{section.3.3}
-\contentsline {chapter}{\numberline {4}R\IeC {\'e}sultats}{13}{chapter.4}
-\contentsline {section}{\numberline {4.1}Bilan}{13}{section.4.1}
-\contentsline {section}{\numberline {4.2}Am\IeC {\'e}liorations pr\IeC {\'e}vues}{13}{section.4.2}
-\contentsline {section}{\numberline {4.3}Am\IeC {\'e}liorations possibles}{13}{section.4.3}
-\contentsline {chapter}{R\IeC {\'e}sum\IeC {\'e}}{15}{section.4.3}
-\contentsline {chapter}{Abstract}{15}{section.4.3}
+\contentsline {subsubsection}{Syst\IeC {\`e}me de base}{11}{subsection.3.2.3}
+\contentsline {subsubsection}{Stockage du r\IeC {\'e}sultat}{11}{subsection.3.2.3}
+\contentsline {subsubsection}{Analyses de performances, limites d'ex\IeC {\'e}cution, arr\IeC {\^e}t automatique}{11}{subsection.3.2.3}
+\contentsline {subsection}{\numberline {3.2.4}Etude d'un mode d\IeC {\'e}bug}{12}{subsection.3.2.4}
+\contentsline {subsection}{\numberline {3.2.5}Utilisation de Dockers}{13}{subsection.3.2.5}
+\contentsline {subsection}{\numberline {3.2.6}Ajout d'op\IeC {\'e}rations de logging}{13}{subsection.3.2.6}
+\contentsline {subsection}{\numberline {3.2.7}Standardisation des donn\IeC {\'e}es}{13}{subsection.3.2.7}
+\contentsline {subsection}{\numberline {3.2.8}Documentation du code existant}{13}{subsection.3.2.8}
+\contentsline {subsection}{\numberline {3.2.9}Mise en place d'un Security Manager}{13}{subsection.3.2.9}
+\contentsline {subsection}{\numberline {3.2.10}Pr\IeC {\'e}-g\IeC {\'e}n\IeC {\'e}ration des donn\IeC {\'e}es}{13}{subsection.3.2.10}
+\contentsline {subsection}{\numberline {3.2.11}Nettoyage de la PLM}{13}{subsection.3.2.11}
+\contentsline {section}{\numberline {3.3}R\IeC {\'e}sultats obtenus}{13}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Mod\IeC {\`e}le final}{13}{subsection.3.3.1}
+\contentsline {chapter}{\numberline {4}R\IeC {\'e}sultats}{15}{chapter.4}
+\contentsline {section}{\numberline {4.1}Bilan}{15}{section.4.1}
+\contentsline {section}{\numberline {4.2}Am\IeC {\'e}liorations pr\IeC {\'e}vues}{15}{section.4.2}
+\contentsline {section}{\numberline {4.3}Am\IeC {\'e}liorations possibles}{15}{section.4.3}
+\contentsline {chapter}{R\IeC {\'e}sum\IeC {\'e}}{17}{section.4.3}
+\contentsline {chapter}{Abstract}{17}{section.4.3}

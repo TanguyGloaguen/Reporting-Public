@@ -1,0 +1,59 @@
+@startuml
+() "User" as User #Blue
+package Client {
+	[Browser]
+	[JavaScript]
+	Browser -r- JavaScript : Action
+}
+User -d- Browser
+() "HTTP" as HTTP
+Browser -d-> HTTP : Request
+() "TCP socket" as Socket
+note right of Socket : JSON-formatted messages
+JavaScript <-d-> Socket
+HTTP -u-> Browser : Reply
+package Server {
+	frame "WebPLM - Server" {
+		[PLMActor]
+		[User state]
+		database Filesystem {
+			[PLM Files]
+		}
+		() "Tribunal" as mqIn
+		PLMActor .d.> [User state] : Creates
+		PLMActor --> [PLM Files] : Fetchs
+		PLMActor -d-> mqIn : Calls 
+		mqIn -> [User state] : Reply (User result)
+		mqIn -u-> PLMActor : Reply (Formatted JSON)
+	}
+	node MessageQueue {
+		[Worker_In]
+		[Worker_Out]
+	}
+	mqIn -> Worker_In : Request
+	Worker_Out -> mqIn : Reply
+	frame Judge {
+		() "Connector" as mqOut
+		frame "Execution Environnement" {
+			[World]
+			[Entity]
+		}
+		[Language]
+		[JSON Parser]
+		[Spies]
+		mqOut <-r-> [JSON Parser] : Uses
+		Spies <--> [JSON Parser] : Uses
+		mqOut --> World : Creates
+		mqOut --> Language : Creates
+		Language --> Entity : Runs
+		World <.r. Spies : Spy on
+		Entity <.. Spies : Spy on
+		Spies -u-> mqOut : Replies
+	}
+	Worker_In -> mqOut : Request
+	mqOut -> Worker_Out : Reply
+}
+Socket <-d-> PLMActor
+HTTP -d-> PLMActor : Request
+PLMActor -u-> HTTP : Reply
+@enduml

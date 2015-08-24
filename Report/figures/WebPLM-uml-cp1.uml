@@ -1,0 +1,29 @@
+@startuml
+
+[GUI] #green
+[Game]
+package "Lesson/Exercise" {
+[World 1]
+[World 2]
+[World ...]
+}
+[LessonRunner]
+[Listener 1]
+[Listener 2]
+[Listener ...]
+GUI --> Game : launches
+Game --> [World 1] : Create
+Game --> [World 2] : Create
+Game --> [World ...] : Create
+[World 1] --> [Listener 1] : Listens
+[World 2] --> [Listener 2] : Listens
+[World ...] --> [Listener ...] : Listens
+[Listener 1] <-- LessonRunner : Creates
+[Listener 2] <-- LessonRunner : Creates
+[Listener ...] <-- LessonRunner : Creates
+[Listener 1] --> LessonRunner : Informs
+[Listener 2] --> LessonRunner : Informs
+[Listener ...] --> LessonRunner : Informs
+LessonRunner --> GUI :updates
+LessonRunner --> GIT : updates
+@enduml

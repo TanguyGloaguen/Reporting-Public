@@ -1,0 +1,50 @@
+@startuml
+
+[GUI] #green
+package "WebPLM" {
+[Game W]
+package "Data" {
+[Lesson Structure]
+}
+[Tribunal]
+[GIT]
+}
+package "Message Queue" {
+(MQ WebPLM)
+(MQ Judge)
+}
+package "Judge" {
+[Game J]
+package "Lesson/Exercise" {
+[World 1]
+[World 2]
+[World ...]
+}
+[LessonRunner]
+[Listener 1]
+[Listener 2]
+[Listener ...]
+}
+
+GUI --> [Game W] : launches
+[Game W] <..> [Lesson Structure] : uses
+[Game W] --> Tribunal : launches
+Tribunal --> (MQ WebPLM) : call
+(MQ Judge) --> [Game J] : launches
+[Game J] --> [World 1] : Create
+[Game J] --> [World 2] : Create
+[Game J] --> [World ...] : Create
+[World 1] --> [Listener 1] : Listens
+[World 2] --> [Listener 2] : Listens
+[World ...] --> [Listener ...] : Listens
+[Listener 1] <-- LessonRunner : Creates
+[Listener 2] <-- LessonRunner : Creates
+[Listener ...] <-- LessonRunner : Creates
+[Listener 1] --> LessonRunner : Informs
+[Listener 2] --> LessonRunner : Informs
+[Listener ...] --> LessonRunner : Informs
+LessonRunner --> (MQ Judge) : updates
+(MQ WebPLM) --> Tribunal : replies
+Tribunal --> GUI : updates
+Tribunal --> GIT : updates
+@enduml

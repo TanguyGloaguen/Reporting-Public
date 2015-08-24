@@ -1,0 +1,52 @@
+@startuml
+title PLM
+
+() "Stream Socket" as StreamSocket
+
+frame Game {
+	() "RunExercise" as compile #Green
+	() "getInitialWorld" as init #Green
+	[GameData] #LightBlue
+	[Game] #LightBlue
+	init --> Game : lesson, exercise
+	compile -r-> Game : code
+}
+
+frame Language {
+	[Language]
+}
+
+
+frame Lessons {
+	frame Exercise {
+		[ExerciseEntity]
+		[Exercise]
+	}
+}
+
+frame Universe {
+	frame World {
+		[Entity]
+		[World]
+	}
+}
+
+frame Spies {
+	[GameListener]
+	[GameStateListener]
+}
+
+Game <-d-> GameData : Uses
+Game --> Language : Creates
+Language --> ExerciseEntity : Runs
+Language ..> Entity : Knows
+Game --> Exercise : Create
+Exercise --> World : Create
+ExerciseEntity ..> Entity : Implements
+World --> ExerciseEntity : Contains
+GameListener ..> ExerciseEntity : Spies
+GameStateListener ..> World : Spies
+GameListener -l-> StreamSocket : Operations
+GameStateListener -l-> GameData : LastResult
+
+@enduml

@@ -1,0 +1,30 @@
+@startuml
+actor User
+participant Angular.JS
+participant WebPLM
+participant Judge
+' Connection sequence
+autonumber
+User --[#green]> WebPLM : Connect
+WebPLM --[#green]> User : Sending JS
+User --[#green]> Angular.JS : Launches
+Angular.JS <--[#green]> WebPLM : Creating websocket
+
+' Compilation sequence
+autonumber
+User -> Angular.JS : Click on "run"
+Angular.JS -> WebPLM : runExercise
+WebPLM -> Judge : JSON-formatted call
+Judge -> WebPLM : Reply - world
+WebPLM -> Angular.JS : Reply - world
+Judge -> WebPLM : Reply - world
+WebPLM -> Angular.JS : Reply - world
+Judge -> WebPLM : ...
+WebPLM -> Angular.JS : ...
+Judge -> WebPLM : Reply - world
+WebPLM -> Angular.JS : Reply - world
+Judge -> WebPLM : Reply - end
+database Git
+WebPLM -> Git : Store result
+WebPLM -> Angular.JS : exercise result
+@enduml

@@ -1,0 +1,52 @@
+@startuml
+() "User" as User #Blue
+package Client {
+	[Browser]
+	[JavaScript]
+	Browser -r- JavaScript : Action
+}
+User -d- Browser
+() "HTTP" as HTTP
+Browser -d-> HTTP : Request
+() "TCP socket" as Socket
+note right of Socket : JSON-formatted messages
+JavaScript <-d-> Socket
+HTTP -u-> Browser : Reply
+package Server {
+	frame "WebPLM - Server" {
+		[PLMActor]
+		[PLM Spies]
+		[PLM (WebPLM)]
+		() "Tribunal" as mqIn
+		PLMActor .d.> [PLM (WebPLM)] : Creates
+		PLMActor .d.> [PLM (WebPLM)] : Calls
+		[PLM Spies] .d.> [PLM (WebPLM)] : Spies on
+		[PLM Spies] -> PLMActor : Replies
+		[PLM (WebPLM)] -> mqIn : Calls
+		mqIn -> [PLM (WebPLM)] : Reply (User result)
+		mqIn -u-> PLMActor : Reply (Formatted JSON)
+	}
+	node MessageQueue {
+		[Worker_In]
+		[Worker_Out]
+	}
+	mqIn -> Worker_In : Request
+	Worker_Out -> mqIn : Reply
+	frame Judge {
+		() "Connector" as mqOut
+		[PLM (Judge)]
+		[JSON Parser]
+		[Spies]
+		mqOut <-r-> [JSON Parser] : Uses
+		Spies <--> [JSON Parser] : Uses
+		mqOut --> [PLM (Judge)] : Launches
+		[PLM (Judge)] <.r. Spies : Spy on
+		Spies -u-> mqOut : Replies
+	}
+	Worker_In -> mqOut : Request
+	mqOut -> Worker_Out : Reply
+}
+Socket <-d-> PLMActor
+HTTP -d-> PLMActor : Request
+PLMActor -u-> HTTP : Reply
+@enduml
