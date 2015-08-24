@@ -22,7 +22,7 @@
 \contentsline {subsection}{\numberline {3.2.5}Utilisation de Docker}{13}{subsection.3.2.5}
 \contentsline {subsection}{\numberline {3.2.6}Documentation du code existant}{13}{subsection.3.2.6}
 \contentsline {subsection}{\numberline {3.2.7}Ajout d'op\IeC {\'e}rations de logging}{13}{subsection.3.2.7}
-\contentsline {subsection}{\numberline {3.2.8}Standardisation des donn\IeC {\'e}es}{13}{subsection.3.2.8}
+\contentsline {subsection}{\numberline {3.2.8}Standardisation des donn\IeC {\'e}es}{14}{subsection.3.2.8}
 \contentsline {subsection}{\numberline {3.2.9}Pr\IeC {\'e}-g\IeC {\'e}n\IeC {\'e}ration des donn\IeC {\'e}es}{14}{subsection.3.2.9}
 \contentsline {subsection}{\numberline {3.2.10}Nettoyage de la PLM}{14}{subsection.3.2.10}
 \contentsline {subsection}{\numberline {3.2.11}Mise en place d'un Security Manager}{15}{subsection.3.2.11}
@@ -33,5 +33,6 @@
 \contentsline {section}{\numberline {4.1}Bilan}{19}{section.4.1}
 \contentsline {section}{\numberline {4.2}Am\IeC {\'e}liorations pr\IeC {\'e}vues}{19}{section.4.2}
 \contentsline {section}{\numberline {4.3}Am\IeC {\'e}liorations possibles}{19}{section.4.3}
-\contentsline {chapter}{R\IeC {\'e}sum\IeC {\'e}}{21}{section.4.3}
-\contentsline {chapter}{Abstract}{21}{section.4.3}
+\contentsline {chapter}{Bibliographie}{23}{chapter*.4}
+\contentsline {chapter}{R\IeC {\'e}sum\IeC {\'e}}{25}{chapter*.4}
+\contentsline {chapter}{Abstract}{25}{chapter*.4}

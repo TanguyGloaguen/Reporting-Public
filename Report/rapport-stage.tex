@@ -77,7 +77,7 @@ Enfin, nous ferons un bilan des résultats et une liste des améliorations prév
 
 \section{Le LORIA}
 
-Le Laboratoire Lorrain de Recherche en Informatique et ses Applications (abrégé LORIA) est une Unité Mixe de Recherche créé en 1997 par association entre le CNRS (Centre National de la Recherche Scientifique), l'UL (Université de Lorraine) et l'INRIA (Institut National de Recherche en Informatique et Automatique).
+Le Laboratoire Lorrain de Recherche en Informatique et ses Applications (abrégé LORIA\cite{LR-WS}) est une Unité Mixe de Recherche créé en 1997 par association entre le CNRS (Centre National de la Recherche Scientifique), l'UL (Université de Lorraine) et l'INRIA (Institut National de Recherche en Informatique et Automatique).
 
 La mission principale du LORIA est la recherche fondamentale et appliquée dans le cadre des sciences informatiques. Elle accueille un total de 450 personnes\footnote{chiffres 2014, http://www.loria.fr/rapports-activite-2/rapport-dactivite-2014}, réparties en 27 équipes sur 5 dépatements :
 \begin{description}
@@ -102,7 +102,7 @@ La mission principale du LORIA est la recherche fondamentale et appliquée dans 
 	\label{fig:organigramme}
 \end{figure}
 
-En tant qu'UMR, le LORIA possède sa propre administration. Un organigramme du LORIA est dispobible en \ref{fig:organigramme}, présentant la structure interne. On y remarque que même si les différentes entités administratives sont bien définies, il n'y a pas de hiérarchie directe entre elles.
+En tant qu'UMR, le LORIA possède sa propre administration. Un organigramme du LORIA est dispobible en \ref{fig:organigramme}\cite{LR-ORG}, présentant la structure interne. On y remarque que même si les différentes entités administratives sont bien définies, il n'y a pas de hiérarchie directe entre elles.
 
 
 \section{La "Programmer's Learning Machine"}
@@ -172,8 +172,8 @@ Les objectifs du stage ont donc été de :
 Les pistes proposées par les encadrants de stages étaient de :
 \begin{itemize}
 	\item Utiliser une queue de message pour stocker les informations de compilation
-	\item Utiliser la technologie Docker pour rendre le système distribuable.
-	\item Utiliser Docker + un SecurityManager pour sécuriser l'environnement d'exécution.
+	\item Utiliser la technologie Docker\cite{DCK-WS} pour rendre le système distribuable.
+	\item Utiliser Docker + un SecurityManager\footnote{java.security.SecurityManager est un composant Java pour gérer les autorisations des logiciels} pour sécuriser l'environnement d'exécution.
 \end{itemize}
 
 \cleardoublepage
@@ -189,7 +189,7 @@ Les technologies utilisées étaient :
 		Docker est une technologie de gestion d'applications distribuées. Le principe est de créer des images de machines virtuelles (appelées images docker) qui, une fois lancées, sont directement utilisables avec tous logiciels lancés. \\
 		Une telle technologie a pour effet de rendre presque trivial la mise en production et la mise à l'échelle des environnements.
 	\item{RabbitMQ} \hfill \\
-		Rabbit MQ est un gestionnaire de queue de message. Une queue de message est un  système permettant de stocker temporairement des données par "bloc". On peut se connecter à cette queue de message pour y déposer des blocs ou en demander un. \\
+		Rabbit MQ\cite{RMQ-WS} est un gestionnaire de queue de message. Une queue de message est un  système permettant de stocker temporairement des données par "bloc". On peut se connecter à cette queue de message pour y déposer des blocs ou en demander un. \\
 		L'idée est que les clients ne s'intéressent pas à qui traite les mesages, juste à ce qu'il soit traité.
 	\item{Play Framework} \hfill \\
 		Play Framework est une application de déploiement de serveur web. Il permet d'installer rapidement un environnement web basé sur une JVM (java ou scala). C'est le système choisi pour développer la version web de la PLM.
@@ -270,7 +270,7 @@ Le résultat final était donc une version de PLM stable, décrite en figure \re
 
 Pendant les semaines suivantes du stage, il a été question d'un mode "débug" de PLM. Ce mode débug devait permettre aux élèves d'avoir un aperçu de l'évolution de leurs variables et au système d'enseignement de détecter des schémas plus précis où l'élève resterait bloqué.
 
-Différentes solutions ont été étudiées au cours du stage, en particulier la librairie JDI de Java pour détecter les modifications sur l'autre machine. Cependant, ce projet n'a jamais eu la priorité qu'il aurait fallu pour le mener à terme.
+Différentes solutions ont été étudiées au cours du stage, en particulier la librairie JDI\cite{JDI}\footnote{com.sun.jdi est une librairie prévue pour analyser une JVM depuis une autre JVM} de Java pour détecter les modifications sur l'autre machine. Cependant, ce projet n'a jamais eu la priorité qu'il aurait fallu pour le mener à terme.
 
 \subsection{Utilisation de Docker}
 
@@ -323,7 +323,7 @@ Cette étape a été effectuée du 27/07 au 05/08
 La dernière étape de ce stage a été de tenter de retirer PLM (en particulier Game) de WebPLM. Pour cela, il fallait étudier les différentes composantes utiles de PLM, les réécrire au mieux pour Play Framework (en Scala) et résoudre le diférents problèmes de taille mémoire et de concurrence qui aparaissaient.
 
 Au début de cette étape, la structure de PLM était celle présentée en figure \ref{fig:wplmUP3}.
-\begin{figure}[h]
+\begin{figure}[h!]
 	\centering
 		\includegraphics[width=0.5\textwidth]{figures/WebPLM-uml-cp3}
 	\caption{Structure de WebPLM au début du nettoyage}
@@ -385,11 +385,51 @@ Enfin, un travail de défrichage a été fait sur le mode débug.
 
 \section{Bilan}
 
-Les réalisations lors de ce stage ont été conformes 
+**TODO**
 
 \section{Améliorations prévues}
 
+Les réalisations lors de ce stage ont été conformes aux objectifs du stage. Aujourd'hui, la version de production de PLM utilise le système séparé mis en place lors de ce stage, y compris les diverses améliorations apportées.
+
+Cependant, une partie importante du travail effectué est encore inachevé.
+
+Les améliorations prévues aujourd'hui sont donc celles abordées lors de ce stage : la suppression de PLM de l'ensemble du serveur et la mise en place d'un système de débug pour avoir plus d'informations sur l'exécution.
+
 \section {Améliorations possibles}
+
+En plus de ces améliorations, il est encore possible de faire d'autres choses pour WebPLM. Il est possible par exemple de créer un système de données indépendant sur lequel serait stockés les exercices, leur état initial et leurs démonstrations. Un tel système rendrait plus facile à gérer une mise à jour des exercices sans interruption de service.
+
+\cleardoublepage
+
+\chapter*{Conclusion}
+
+\cleardoublepage
+
+\begin{thebibliography}{9}
+
+\bibitem{LR-WS}
+	"LORIA",
+	\emph{Site officiel du LORIA}, \hfill \\
+	http://www.loria.fr/
+
+\bibitem{LR-ORG}
+	"Organigramme",
+	\emph{Organigamme du LORIA}, \hfill \\
+	\hfill {http://www.loria.fr/le-loria-1/organisation/organigramme}
+
+\bibitem{RMQ-WS}
+	"RabbitMQ",
+	\emph{RabbitMQ, messaging that just works}, \hfill \\
+	https://www.rabbitmq.com/
+
+\bibitem{DCK-WS}
+	"Docker",
+	\emph{Docker - Build, Ship and Run Any App, Anywhere}, \hfill \\
+	https://www.docker.com/
+
+\bibitem{}
+
+\end{thebibliography}
 
 \cleardoublepage
 \thispagestyle{empty}
