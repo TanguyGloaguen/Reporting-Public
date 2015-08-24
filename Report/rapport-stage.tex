@@ -262,7 +262,7 @@ Le résultat final était donc une version de PLM stable, décrite en figure \re
 \begin{figure}[h]
 	\centering
 		\includegraphics[width=0.7\textwidth]{figures/WebPLM-uml-cp2}
-	\caption{Structure spimplifiée de WebPLM et juges à la fin de l'étape de création des juges.}
+	\caption{Structure simplifiée de WebPLM et juges à la fin de l'étape de création des juges.}
 	\label{fig:wplmUP2}
 \end{figure}
 
@@ -296,15 +296,15 @@ Cette étape s'est étendue sur les 20 et 21 juillet.
 
 \subsection{Ajout d'opérations de logging}
 
-Une étape de l'amélioration du projet WebPLM a été de rajouter l'affichage du canal de sortie standard sur l'écran de l'utilisateur. Pour cela, il a fallu capturer toutes les données de sortie standard et les rediriger en tant qu'opérations vers l'utilisateur. Il a également fallu 
+Une étape de l'amélioration du projet WebPLM a été de rajouter l'affichage du canal de sortie standard sur l'écran de l'utilisateur. Pour cela, il a fallu capturer toutes les données de sortie standard et les rediriger en tant qu'opérations vers l'utilisateur. Il a également fallu recréer un canal spécifque permettant aux logs de l'application de tout de même apparaître sur la sortie standard.
 
 Cette étape a pris place les 22/07 et 23/07.
 
 \subsection{Standardisation des données}
 
-Un problème assez particulier nous est apparu. Pour certains mondes, le code de résolution était entré et un juge avlidait le résultat, cependant l'affichage sur la WebPLM paraissait faux.
+Un problème assez particulier nous est apparu. Pour certains mondes, le code de résolution était entré et un juge validait le résultat, cependant l'affichage sur la WebPLM paraissait faux.
 
-Il  s'avère que la génération de certains mondes était aléatoire, ce qui provoquait une discordance entre les actions calculées à partir du monde du juge et celles appliquées sur le monde affiché. Il a donc fallu standardiser les mondes.
+Il s'avère que la génération de certains mondes était aléatoire, ce qui provoquait une discordance entre les actions calculées à partir du monde du juge et celles appliquées sur le monde affiché. Il a donc fallu standardiser les mondes.
 
 Pour cela, il a été appliqué une méthode simple : les fonctions aléatoires ont vu leur "seed" se faire fixer au même nombre. Selon la Javadoc, les résultats sont donc maintenant strictement identiques quelque sit le système utilisé.
 
@@ -312,19 +312,80 @@ Cela a été effectué le 24/07.
 
 \subsection{Pré-génération des données}
 
+En vue du passage a une version de WebPLM (côté serveur) sans la composante PLM, il fallait générer les données nécessaires (structures des execices, état initial des mondes, démonstrations) et les stocker de façon statique avant de pouvoir juste supprimer Game.
+
+Pour arriver à ce résultat, il a fallu modifier un juge pour lui faire parcourir tous les exercices et, pour chacun, générer la démonstration et l'état initial.
+
+Cette étape a été effectuée du 27/07 au 05/08
+
 \subsection{Nettoyage de la PLM}
 
+La dernière étape de ce stage a été de tenter de retirer PLM (en particulier Game) de WebPLM. Pour cela, il fallait étudier les différentes composantes utiles de PLM, les réécrire au mieux pour Play Framework (en Scala) et résoudre le diférents problèmes de taille mémoire et de concurrence qui aparaissaient.
+
+Au début de cette étape, la structure de PLM était celle présentée en figure \ref{fig:wplmUP3}.
+\begin{figure}[h]
+	\centering
+		\includegraphics[width=0.5\textwidth]{figures/WebPLM-uml-cp3}
+	\caption{Structure de WebPLM au début du nettoyage}
+	\label{fig:wplmUP3}
+\end{figure}
+
+Le but était d'obtenir une structure telle que celle en \ref{fig:wplmUP4}.
+
+\begin{figure}[h]
+	\centering
+		\includegraphics[width=0.9\textwidth]{figures/WebPLM-uml-cp4}
+	\caption{Structure finale idéale de WebPLM.}
+	\label{fig:wplmUP4}
+\end{figure}
+
+Les principales étapes de ce nettoyage ont été de retirer la composante de lecure de données, les missions (textes d'informations sur les exercices) et les APIs (textes d'informations sur les mondes), la composante de localisation ainsi que celle de gestion du langage de programmation. Il a fallu également convertir les fonctions de génération en fonction de lecture ou d'exposition : les démonstrations sont par exemple pré-générées et exposées en tant que fichiers par le serveur et c'est le client qui va les chercher pour les afficher, ce qui améliore énormément les performances du serveur.
+
+Cependant, il reste un grand nombre de fonctions non converties : gestion du changement de leçon, d'exercice et de langue (naturelle/programmation), sauvegarde des données sur le gestionnaire GIT.
+
+Cette tâche, commencée le 06/08, continue encore aujourd'hui.
+
 \subsection{Mise en place d'un Security Manager}
+
+Vers la fin de la période, nous nous sommes rendu compte que de nombreuses failels de sécurité que Docker était censé résoudre ne l'étaient en fait pas : accès à l'internet depuis un container, surcharge du processeur et surcharge du disque dur.
+
+Pour résoudre certains de ces problèmes, nous avons utilisé un outil rendu disponible par Java, le Security Manager. Il permet de limiter les actions possibles pour chaque composante de l'application.
+
+Nous avons donc limité les actions dispoibles à l'utilisateur, en lui interdisant toute communication avec l'extérieur du programme. Il restait tout de même plusieurs problèmes potentiels mais le résultat est qu'aucun de ces problèmes ne risque de briser la sécurité du système.
 
 \section{Résultats obtenus}
 
 \subsection{Modèle final}
+
+Le modèle final de WebPLM est donc celui présenté en \ref{fig:wplmUP5}
+\begin{figure}[h]
+	\centering
+		\includegraphics[width=0.7\textwidth]{figures/WebPLM-uml-cp3}
+	\caption{Structure de WebPLM a la fin du stage.}
+	\label{fig:wplmUP5}
+\end{figure}
+
+C'est effectivement la même structure qu'avant le nettoyage, a raison : au moment de l'écriture de ce rapport, l'opération de séparation des composants de Game n'est pas terminée et ne le sera probablement pas avant la fin du stage.
+
+ \subsection{Apports}
+
+Cependant, un certain nombre d'apports ont été faits à PLM au cours de ce stage.
+
+Dans un premier temps, l'objectif principal de séparér composantes d'exécution et de gestion est accompli.
+
+Il a été également rajouté des fonctons auxiliaires utiles : gestion de la sortie d'affichage standard, suppression des composantes aléatoires des exercices.
+
+De gros progrès ont été également apportés sur l'étape de retrait de PLM depuis WebPLM.
+
+Enfin, un travail de défrichage a été fait sur le mode débug.
 
 \cleardoublepage 
 
 \chapter{Résultats}
 
 \section{Bilan}
+
+Les réalisations lors de ce stage ont été conformes 
 
 \section{Améliorations prévues}
 
