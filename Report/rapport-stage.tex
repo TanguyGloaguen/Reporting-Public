@@ -69,7 +69,7 @@ Dans un second temps, nous verrons les objectifs du stage.
 
 Puis, nous étudierons la réalisation de ces objectifs en tant que méthodologie, en tant qu'environnement et les résultats obtenus.
 
-Enfin, nous ferons un bilan des résultats et une liste des améliorations prévues et possibles.
+Enfin, nous ferons un bilan des résultats et une liste des améliorations prévues.
 
 \cleardoublepage
 
@@ -185,14 +185,14 @@ La réalisation s'est principalement faite sur un environnement de développemen
 
 Les technologies utilisées étaient :
 \begin{description}
-	\item{Docker} \hfill \\
+	\item[Docker] \hfill \\
 		Docker est une technologie de gestion d'applications distribuées. Le principe est de créer des images de machines virtuelles (appelées images docker) qui, une fois lancées, sont directement utilisables avec tous logiciels lancés. \\
 		Une telle technologie a pour effet de rendre presque trivial la mise en production et la mise à l'échelle des environnements.
-	\item{RabbitMQ} \hfill \\
+	\item[RabbitMQ] \hfill \\
 		Rabbit MQ\cite{RMQ-WS} est un gestionnaire de queue de message. Une queue de message est un  système permettant de stocker temporairement des données par "bloc". On peut se connecter à cette queue de message pour y déposer des blocs ou en demander un. \\
 		L'idée est que les clients ne s'intéressent pas à qui traite les mesages, juste à ce qu'il soit traité.
-	\item{Play Framework} \hfill \\
-		Play Framework est une application de déploiement de serveur web. Il permet d'installer rapidement un environnement web basé sur une JVM (java ou scala). C'est le système choisi pour développer la version web de la PLM.
+	\item[Play Framework] \hfill \\
+		Play Framework\cite{PFM-WS} est une application de déploiement de serveur web. Il permet d'installer rapidement un environnement web basé sur une JVM (java ou scala). C'est le système choisi pour développer la version web de la PLM.
 \end{description}
 
 En plus de ces technologies, il était nécessaire de créer le modèle de l'application. Il a donc été nécessaire d'appliquer différents designs patterns.
@@ -228,11 +228,13 @@ Cependant, la technologie RMI de Java n'était pas prévue pour récupérer plus
 
 Le modèle envisagé a donc été dans un second temps un gestionnaire de queue de messages, RabbitMQ. Il permettait en effet de distribuer la charge de façon automatique mais aussi de créer automatiquement un protocole de retour dans des queues de messages indépendantes.
 
+C'est sur ce second modèle utilisant RabbitMQ que je me suis engagé lors de ce stage.
+
 \subsection{Création des juges}
 
 Les juges sont de simples conteneurs de la version de PLM déjà présente dans WebPLM. Cependant, ils possèdent une interface leur permettant de communiquer avec une queue de message.
 
-La création des juges permit également de mettre en place des tests automatiques de compilation, nécessaire lorsque WebPLM n'était pas encore à jour. Les tests sont toujours en place dans les juges et permettent encore de tester la viabilité des changements de code sur des exercices simples et plus complexes.
+En plus de la création des juges, il a été mis en place un environnement pour tester leur fonctionnement. Cela permet, en plus des tests d'intégration déjà présent dans la PLM, de tester le fonctionnement des juges eux-même en lançant différents codes. Ces tests sont toujours présents dans la version actuelle des juges.
 
 Cette étape a duré approximativement deux jours, terminée le 26-06.
 
@@ -241,7 +243,7 @@ Cette étape a duré approximativement deux jours, terminée le 26-06.
 Dans un second temps, il était nécessaire de refabriquer l'étape de compilation de WebPLM. Pour cela, il a fallu dans un premier temps écrire la structure d'appel et de récupération depuis la queue de message, puis de reformater le code de manière à le rendre utilisable.
 
 \subsubsection{Système de base}
-Tout d'abord, il a fallu écrire un système de base permettant à WebPLM d'utiliser la message queue pour gérer les appels de compilation et d'en rcupérer les résultats pour les transmettre au client.
+Tout d'abord, il a fallu écrire un système de base permettant à WebPLM d'utiliser la message queue pour gérer les appels de compilation et d'en récupérer les résultats pour les transmettre au client.
 
 L'étape d'écriture du code a pris environ 3 jours, terminée le 01-07. A ce moment, WebPLM utilisait déjà des juges parallélisables pour la compilation.
 
@@ -256,7 +258,7 @@ Enfin, il a fallu tester les performances et adapter le résultat en conséquenc
 La première version avait d'énormes problèmes de performance. Cela était dû au fait que la queue de messages contenait un message par opération du monde, message générés en parallèle qui plus est.
 J'ai donc mis en place un accumulateur au niveau des listeners (cf figure \ref{fig:wplmUP1}) pour n'envoyer qu'une opération toutes les 500ms. Cela a résolu le problème de performance de base.
 
-Il y avait également un problème de stabilité lors de compilations se terminant en boucle infinie. Pour gérer cela, il a été mis en place un système de sémaphore avec tentative d'acquisition pendant X secondes (X vallait 30s, puis 15, puis 10 au fur et à mesure du projet), sémaphore réveillée par les listeners lors de la fin d'exécution.
+Il y avait également un problème de stabilité lors de compilations se terminant en boucle infinie. Pour gérer cela, il a été mis en place un système de sémaphore avec tentative d'acquisition pendant X secondes (X valait 30s, puis 15, puis 10 au fur et à mesure du projet), sémaphore réveillée par les listeners lors de la fin d'exécution.
 
 Le résultat final était donc une version de PLM stable, décrite en figure \ref{fig:wplmUP2}.
 \begin{figure}[h]
@@ -279,10 +281,13 @@ Après avoir modifié WebPLM pour se comporter en deux parties, il a été néce
 Les principaux défis de cette étape n'ont pas été la réalisation elle-même mais la compréhension des différents problèmes rencontrés.
 
 \begin{description}
-	\item{Interaction entre Docker et Maven} \hfill \\
-		Docker et Maven sont deux outils ayant des propriétés similaires : la centralisation des données en vue d'une utilisation déployable facilement. Le principal souci rencontré est lors de la génération des images Docker, Maven devant télécharger à chaque fois l'intégralité des composants. Le résultat était une compilation a réussite aléatoire.
-	\item{Déploiement de RabbitMQ et utilisations de variables internes} \hfill \\
-		Les différents composants de WebPLm avaient tous besoin d'un outil commun : la conaissance de l'adresse de la Message Queue. Il a fallu modifier WebPLM et les juges de manière à pouvoir récupérer ces informations automatiquement.
+	\item[Interaction entre Docker et Maven] \hfill \\
+		Docker et Maven sont deux outils ayant des propriétés similaires : la centralisation des données en vue d'une utilisation déployable facilement. Le principal souci rencontré est lors de la génération des images Docker, Maven devant télécharger à chaque fois l'intégralité des composants.
+		\hfill \\
+		Le résultat était une compilation à réussite aléatoire. \hfill \\
+		Nous avons dû compiler\footnote{Cette compilation se fait en utilisant la commande "activator stage". Le comportement habituel de Play Framework est de recompiler au fur et à mesure si on utilise "activator start/run"} le serveur Play Framework en dehors du docker, pour éviter de devoir retélécharger les dépendances à chaque fois.
+	\item[Déploiement de RabbitMQ et utilisations de variables internes] \hfill \\
+		Les différents composants de WebPLM avaient tous besoin d'un outil commun : la conaissance de l'adresse de la Message Queue. Il a fallu modifier WebPLM et les juges de manière à pouvoir récupérer ces informations automatiquement.
 \end{description}
 
 Cette étape aura duré du 09/07 au 16/07.
@@ -302,11 +307,11 @@ Cette étape a pris place les 22/07 et 23/07.
 
 \subsection{Standardisation des données}
 
-Un problème assez particulier nous est apparu. Pour certains mondes, le code de résolution était entré et un juge validait le résultat, cependant l'affichage sur la WebPLM paraissait faux.
+Un problème assez particulier nous est apparu. Pour certains mondes, malgré que le code soumis à l'utilisateur corresponde à la solution de l'exercice et que le juge validait le résultat, la représentation du monde affiché ne correspondait pas aux résultats attendus.
 
 Il s'avère que la génération de certains mondes était aléatoire, ce qui provoquait une discordance entre les actions calculées à partir du monde du juge et celles appliquées sur le monde affiché. Il a donc fallu standardiser les mondes.
 
-Pour cela, il a été appliqué une méthode simple : les fonctions aléatoires ont vu leur "seed" se faire fixer au même nombre. Selon la Javadoc, les résultats sont donc maintenant strictement identiques quelque sit le système utilisé.
+Pour cela, il a été appliqué une méthode simple : les fonctions aléatoires ont vu leur "seed" se faire fixer au même nombre. Selon la Javadoc, les résultats sont donc maintenant strictement identiques quelque soit le système utilisé.
 
 Cela a été effectué le 24/07.
 
@@ -320,7 +325,7 @@ Cette étape a été effectuée du 27/07 au 05/08
 
 \subsection{Nettoyage de la PLM}
 
-La dernière étape de ce stage a été de tenter de retirer PLM (en particulier Game) de WebPLM. Pour cela, il fallait étudier les différentes composantes utiles de PLM, les réécrire au mieux pour Play Framework (en Scala) et résoudre le diférents problèmes de taille mémoire et de concurrence qui aparaissaient.
+La dernière étape de ce stage a été de tenter de retirer PLM (en particulier Game) de WebPLM. Pour cela, il fallait étudier les différentes composantes utiles de PLM, les réécrire au mieux pour Play Framework (en Scala) et résoudre le diférents problèmes de taille mémoire et de concurrence qui apparaissaient.
 
 Au début de cette étape, la structure de PLM était celle présentée en figure \ref{fig:wplmUP3}.
 \begin{figure}[h!]
@@ -347,37 +352,11 @@ Cette tâche, commencée le 06/08, continue encore aujourd'hui.
 
 \subsection{Mise en place d'un Security Manager}
 
-Vers la fin de la période, nous nous sommes rendu compte que de nombreuses failels de sécurité que Docker était censé résoudre ne l'étaient en fait pas : accès à l'internet depuis un container, surcharge du processeur et surcharge du disque dur.
+Vers la fin de la période, nous nous sommes rendu compte que de nombreuses failles de sécurité que Docker était censé résoudre ne l'étaient en fait pas : accès à l'internet depuis un container, surcharge du processeur et surcharge du disque dur.
 
-Pour résoudre certains de ces problèmes, nous avons utilisé un outil rendu disponible par Java, le Security Manager. Il permet de limiter les actions possibles pour chaque composante de l'application.
+Pour résoudre certains de ces problèmes, nous avons utilisé un outil mis à disposition par Java, le Security Manager. Il permet de limiter les actions possibles pour chaque composante de l'application.
 
-Nous avons donc limité les actions dispoibles à l'utilisateur, en lui interdisant toute communication avec l'extérieur du programme. Il restait tout de même plusieurs problèmes potentiels mais le résultat est qu'aucun de ces problèmes ne risque de briser la sécurité du système.
-
-\section{Résultats obtenus}
-
-\subsection{Modèle final}
-
-Le modèle final de WebPLM est donc celui présenté en \ref{fig:wplmUP5}
-\begin{figure}[h]
-	\centering
-		\includegraphics[width=0.7\textwidth]{figures/WebPLM-uml-cp3}
-	\caption{Structure de WebPLM a la fin du stage.}
-	\label{fig:wplmUP5}
-\end{figure}
-
-C'est effectivement la même structure qu'avant le nettoyage, a raison : au moment de l'écriture de ce rapport, l'opération de séparation des composants de Game n'est pas terminée et ne le sera probablement pas avant la fin du stage.
-
- \subsection{Apports}
-
-Cependant, un certain nombre d'apports ont été faits à PLM au cours de ce stage.
-
-Dans un premier temps, l'objectif principal de séparér composantes d'exécution et de gestion est accompli.
-
-Il a été également rajouté des fonctons auxiliaires utiles : gestion de la sortie d'affichage standard, suppression des composantes aléatoires des exercices.
-
-De gros progrès ont été également apportés sur l'étape de retrait de PLM depuis WebPLM.
-
-Enfin, un travail de défrichage a été fait sur le mode débug.
+La mise en place du SeurityManager a permis de li!iter les actions de l'utilisateur à la stricte utilisation des commandes disponibles dans l'application ainsi que d'empêcher l'utilisateur d'utiliser des commandes de communication web ou de création de fichiers. Les problèmes de sécurité restants (charge CPU, principalement) sont hors de portée de ce système.
 
 \cleardoublepage 
 
@@ -385,49 +364,86 @@ Enfin, un travail de défrichage a été fait sur le mode débug.
 
 \section{Bilan}
 
-**TODO**
+\subsection{Modèle final}
 
-\section{Améliorations prévues}
+Le modèle final de WebPLM est donc celui présenté en \ref{fig:wplmUP5}
+\begin{figure}[h]
+	\centering
+		\includegraphics[width=0.6\textwidth]{figures/WebPLM-uml-cp3}
+	\caption{Structure de WebPLM a la fin du stage.}
+	\label{fig:wplmUP5}
+\end{figure}
+
+Cette structure est la même qu'avant le nettoyage. En effet, le nettoyage n'est pas terminé. Ceepndant, cette version apporte bien des améliorations par rapport à la version de WebPLM présente à l'origine.
+
+La version présentée est plus sécurisée. En effet, chaque composante du système est séparé dans un container différent.
+
+De plus, cette version est plus simple à mettre à l'échelle : les composants sont dupliquables, en particulier le Juge qui est prévu spécifiquement pour être dupliqué.
+
+ \subsection{Apports}
+
+Un certain nombre d'apports ont été faits à PLM au cours de ce stage.
+
+Dans un premier temps, l'objectif principal de séparer les composantes d'exécution et de gestion est accompli.
+
+Des fonctions utilitaires ont été rajoutées, telles que : gestion de la sortie d'affichage standard, suppression des composantes aléatoires des exercices.
+
+De gros progrès ont été également apportés sur l'étape de retrait de PLM depuis WebPLM.
+
+Enfin, un travail de défrichage a été fait sur le mode débug.
+
+\subsection{Produit final}
+
+A la fin de mon stage, la version de WebPLM est une version bien plus résistante à la charge et aux erreurs ou malices des utilisateurs que la version d'origine.
 
 Les réalisations lors de ce stage ont été conformes aux objectifs du stage. Aujourd'hui, la version de production de PLM utilise le système séparé mis en place lors de ce stage, y compris les diverses améliorations apportées.
+
+\section{Améliorations possibles}
 
 Cependant, une partie importante du travail effectué est encore inachevé.
 
 Les améliorations prévues aujourd'hui sont donc celles abordées lors de ce stage : la suppression de PLM de l'ensemble du serveur et la mise en place d'un système de débug pour avoir plus d'informations sur l'exécution.
 
-\section {Améliorations possibles}
-
-En plus de ces améliorations, il est encore possible de faire d'autres choses pour WebPLM. Il est possible par exemple de créer un système de données indépendant sur lequel serait stockés les exercices, leur état initial et leurs démonstrations. Un tel système rendrait plus facile à gérer une mise à jour des exercices sans interruption de service.
+Il y a également certains points, non abordés pendant ce stage, qui sont encore prévus : la suppression de la composante PLM des juges et l'envoi direct de données nécessaires à la compilation.
 
 \cleardoublepage
 
 \chapter*{Conclusion}
 
+Lors de ce stage, j'ai énormément appris sur la réalisation d'un projet. J'ai eu la chance d'avoir une tâche assez complexe à effectuer, qui m'a demandée un travail de conception assez important. Ce stage m'a également permis d'avoir un aperçu de ce qu'est travailler en équipe, avec mes premières expériences complexes sur des outils de gestion de versions. Enfin, j'ai pu y pratiquer l'amélioration d'outils existants, ce qui est très différent de la conception pure et qui présente sa propre série de difficultés.
+
+La transformation de PLM en une application web est une étape importante de la PLM : l'outil pourrait devenir bien plus utilisé, non seulement dans l'enseignement en informatique mais peut-être également dans l'enseignement général.
+
+
+
 \cleardoublepage
 
-\begin{thebibliography}{9}
-
-\bibitem{LR-WS}
-	"LORIA",
-	\emph{Site officiel du LORIA}, \hfill \\
-	http://www.loria.fr/
-
-\bibitem{LR-ORG}
-	"Organigramme",
-	\emph{Organigamme du LORIA}, \hfill \\
-	\hfill {http://www.loria.fr/le-loria-1/organisation/organigramme}
-
-\bibitem{RMQ-WS}
-	"RabbitMQ",
-	\emph{RabbitMQ, messaging that just works}, \hfill \\
-	https://www.rabbitmq.com/
+\begin{thebibliography}{5}
 
 \bibitem{DCK-WS}
 	"Docker",
 	\emph{Docker - Build, Ship and Run Any App, Anywhere}, \hfill \\
-	https://www.docker.com/
+	\url{https://www.docker.com/}.
 
-\bibitem{}
+\bibitem{LR-WS}
+	"LORIA",
+	\emph{Site officiel du LORIA}, \hfill \\
+	\url{http://www.loria.fr/}.
+
+\bibitem{LR-ORG}
+	"Organigramme",
+	\emph{Organigamme du LORIA}, \hfill \\
+	\url{http://www.loria.fr/le-loria-1/organisation/organigramme}.
+
+\bibitem{PFM-WS}
+	"Play Framework",
+	\emph{Play Framework - Build Modern \& Scalable Web Apps with Java and Scala}, \hfill \\
+	\url{https://www.playframework.com/}.
+
+\bibitem{RMQ-WS}
+	"RabbitMQ",
+	\emph{RabbitMQ, messaging that just works}, \hfill \\
+	\url{https://www.rabbitmq.com/}.
 
 \end{thebibliography}
 
@@ -436,14 +452,16 @@ En plus de ces améliorations, il est encore possible de faire d'autres choses p
 
 \section*{Résumé}
 \addcontentsline{toc}{chapter}{Résumé}
+Le projet PLM (Programmer's Learning Machine) a pour but d'enseigner l'informatique aux personnes qui l'utilisent. Dans le cadre du développement web de cette application utilisant Play Framework et Angular.js, il a fallu mettre en place un système séparant l'exécution de code de la gestion des utilisateurs. Pour cela, il est utilisé un système de queue de message entre composantes d'exécution mises à l'échelle et un serveur de gestion dans des containers Docker.
 
-{\bf Mots-clés :}
+{\bf Mots-clés :} Apprentissage, docker, queue de messages, RabbitMQ, play framework, angular.js
 
 
 \section*{Abstract}
 \addcontentsline{toc}{chapter}{Abstract}
+The Programmer's Learning Machine (PLM) project is aiming at teaching computer science to its users. While switching this application to a Play Framework and Angular.js web app, we had to create a system to split code execution and user management. We used a message queue system splitting scalable execution components and a management server in Docker containers.
 
-{\bf Keywords :}
+{\bf Keywords :} Learning, docker, message queue, play framework, angular.js
 
 
 \end{document}
