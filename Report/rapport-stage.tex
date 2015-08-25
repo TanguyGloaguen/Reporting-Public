@@ -374,9 +374,9 @@ Le modèle final de WebPLM est donc celui présenté en \ref{fig:wplmUP5}
 	\label{fig:wplmUP5}
 \end{figure}
 
-Cette structure est la même qu'avant le nettoyage. En effet, le nettoyage n'est pas terminé. Ceepndant, cette version apporte bien des améliorations par rapport à la version de WebPLM présente à l'origine.
+Cette structure est la même qu'avant le nettoyage. En effet, le nettoyage n'est pas terminé. Cependant, cette version apporte bien des améliorations par rapport à la version de WebPLM présente à l'origine.
 
-La version présentée est plus sécurisée. En effet, chaque composante du système est séparé dans un container différent.
+La version actuelle est plus sécurisée. En effet, chaque composante du système est séparée dans un container différent.
 
 De plus, cette version est plus simple à mettre à l'échelle : les composants sont dupliquables, en particulier le Juge qui est prévu spécifiquement pour être dupliqué.
 
@@ -452,16 +452,16 @@ La transformation de PLM en une application web est une étape importante de la 
 
 \section*{Résumé}
 \addcontentsline{toc}{chapter}{Résumé}
-Le projet PLM (Programmer's Learning Machine) a pour but d'enseigner l'informatique aux personnes qui l'utilisent. Dans le cadre du développement web de cette application utilisant Play Framework et Angular.js, il a fallu mettre en place un système séparant l'exécution de code de la gestion des utilisateurs. Pour cela, il est utilisé un système de queue de message entre composantes d'exécution mises à l'échelle et un serveur de gestion dans des containers Docker.
+Le projet PLM (Programmer's Learning Machine) a pour but d'enseigner l'informatique aux personnes qui l'utilisent. Dans le cadre du développement web de cette application utilisant Play Framework et Angular.js, il a fallu mettre en place un système séparant l'exécution de code de la gestion des utilisateurs. Pour cela, nous avons implémenté un système de queue de message entre composantes d'exécution et un serveur de gestion. Ces composantes d'exécution sont dans des containers Docker et peuvent être mises à l'échelle.
 
-{\bf Mots-clés :} Apprentissage, docker, queue de messages, RabbitMQ, play framework, angular.js
+{\bf Mots-clés :} Apprentissage, Docker, queue de messages, RabbitMQ, Play Framework, Angular.js
 
 
 \section*{Abstract}
 \addcontentsline{toc}{chapter}{Abstract}
-The Programmer's Learning Machine (PLM) project is aiming at teaching computer science to its users. While switching this application to a Play Framework and Angular.js web app, we had to create a system to split code execution and user management. We used a message queue system splitting scalable execution components and a management server in Docker containers.
+The Programmer's Learning Machine (PLM) project is aiming at teaching computer science to its users. While switching this application to a Play Framework and Angular.js web app, we had to create a system to split code execution and user management. We implemented a message queue system between compilation components and a management server. These components are all scalable and in Docker containers.
 
-{\bf Keywords :} Learning, docker, message queue, play framework, angular.js
+{\bf Keywords :} Learning, Docker, message queue, Play Framework, Angular.js
 
 
 \end{document}

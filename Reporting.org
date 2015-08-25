@@ -1,16 +1,30 @@
 * Introduction
 This internship is about taking the current WebPLM implementation as well as the adapted PLM version ('library' branch) and cutting it in two scalable halves.
 The final version should handle code execution in a different environnement for each compilation/execution request.
-Link for the separated WebPLM :
+Links for the separated WebPLM :
 https://github.com/TanguyGloaguen/webPLM/tree/separation-WebPLM
 https://github.com/BuggleInc/webPLM/tree/split
-Link for the worker :
+Links for the worker :
 https://github.com/TanguyGloaguen/WebPLM_Worker
 https://github.com/BuggleInc/PLM-judge
 
 * Findings
 * Development
 * Journal
+** Entry 2015-08-25
+- Finished report.
+- Written some part of techical state of project.
+*** Planned work [0/7]
+- Remove Game from PLM [0/3]
+. [ ] Rewrite Git funtions for WebPLM
+. [ ] Use the global data container everywhere
+. [ ] Rewrite events to use WebPLm specific data instead of Game data.
+- [ ] Localize compilation interrupt/crash messages in client.
+- [ ] Dynamically send data to judges.
+- [ ] Remove PLM from judge.
+- [ ] Check variable status at execution.
+- [ ] Write automatic load balancer.
+
 ** Entry 2015-08-19
 - Security manager finished (?)
 :: can be better, but no security issues for now. More tests needed ?
@@ -19,7 +33,7 @@ https://github.com/BuggleInc/PLM-judge
 - Remove Game from WebPLM [0/3]
 . [ ] Rewrite Git for WebPLM.
 . [ ] Use the global data container everywhere.
-. [ ] Use the global data container everywhere.stead of Game data.
+. [ ] Rewrite events to use WebPLm specific data instead of Game data.
 :: status : ongoing (est. 60% done)
 - [ ] Localize compilation interrupt/crash messages in client.
 - [ ] Dynamically send data to judges.
