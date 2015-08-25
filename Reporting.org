@@ -513,11 +513,13 @@ I'd like some infos on what to re-implement, and what to discard, as well as som
 **** Put webPLM, judge, message queue, database into docker images [Matthieu]
 **** Link containers (webPLM - MQ - judge || webPLM - DB) [Matthieu]
 *** Custom debug messages [Alexandre]
+**** Feedback system on custom messages [Matthieu]
 *** World random removal
 *** System.out display
 *** Unit tests on Angular.JS interface [Pierric]
 *** Reaper library [Hervé]
-*** New login modes [Matthieu]
+*** Profile server (stored user profile) [Matthieu]
+**** Several login modes (G+, GitHub) [Matthieu]
 *** New UI [Matthieu]
 
 ** Remaining work on PLM & how to do it :
