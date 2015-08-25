@@ -9,7 +9,8 @@ https://github.com/TanguyGloaguen/WebPLM_Worker
 https://github.com/BuggleInc/PLM-judge
 
 * Findings
-* Development
+- Message Queue how-to (RabbitMQ)
+- Docker how-to
 * Journal
 ** Entry 2015-08-25
 - Finished report.
@@ -501,3 +502,37 @@ I'd like some infos on what to re-implement, and what to discard, as well as som
 :: status : no ETA
 
 * Conclusion
+** All work done on PLM this summer :
+*** Created judges.
+**** Message Queue
+**** Execution call rewrite for WebPLM
+**** "manual" Git responses generation
+**** Tribunal (distant system interface)
+**** Security Manager
+*** Docker use
+**** Put webPLM, judge, message queue, database into docker images [Matthieu]
+**** Link containers (webPLM - MQ - judge || webPLM - DB) [Matthieu]
+*** Custom debug messages [Alexandre]
+*** World random removal
+*** System.out display
+*** Unit tests on Angular.JS interface [Pierric]
+*** Reaper library [Hervé]
+*** New login modes [Matthieu]
+*** New UI [Matthieu]
+
+** Remaining work on PLM & how to do it :
+*** TODO Remove references to plm.models.Lesson/Exercise in WebPLM
+- [ ] Replace it by models.data.Lesson/Exercise ones
+- [ ] Identify all remaining ungenerated data.
+- [ ] Add these data to generation patterns.
+*** TODO Create session-specific location storage component.
+- [ ] Create map[lesson, exercise] to store user location by lesson
+- [ ] Use said map in relevant place (switchLesson)
+- [ ] Store user code cleanly.
+*** TODO Write GIT commands
+- [ ] Identify places where GIT message must be generated
+- [ ] Generate GIT message at these places
+*** TODO Remove useless remaining files
+- [ ] Identify & remove all lessons. components
+- [ ] Identify & remove all plm.universe components
+- [ ] Identify & remove most plm.core components
